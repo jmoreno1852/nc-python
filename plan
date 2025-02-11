@@ -1,0 +1,59 @@
+#What do i need to implement in nc
+Open tcp connections
+Send upd packets
+listen on arbitrary TCP or UDP ports
+port scanning
+deal with IPv4 and IPv6
+
+#Quiero implementarlo como script asi que tendre que usar el shebang para no tener que usar python3 para la ejecucion.
+
+#Tendre que comprovar args kwargs para leer las distintas flags
+-4
+	Forced to use IPv4	
+-6 No implementar
+-D
+	Enable debugging on socket
+-d
+	Do not attempt to read from stdin
+-h
+	Print out nc help
+-i <interval>
+	Delay time interval between lines of text send and received.
+	Delay time between connections to multiple ports
+-k
+	Forces to stay listenning for another connection after current connection is completed.
+	Error to use it without -l
+-l
+	Specify that nc should listen for incomming connection.
+	Error to use with -p, -s, -z
+	Any timeouts with the -w are ignored
+-n
+	Do not do any DNS or service lookups on any specified address, host name or ports
+	This means also that by default i should DNS review when connection to host or ip????????
+-p <port>
+	Specifies source port tu use by nc
+	Error to use with -l
+-r
+	Specifies that source and destination ports should be chosen randomly, instead of sequentially within a reange or in the order that the system
+	assigns them
+-S
+	Enables RFC 2385 TCP MD5 signature option
+-s <source_ip>
+	Specifies IP of interface used to send packets.
+	Error to use with -l
+	
+-T <ToS>
+	Specifies Type of Service for connection
+	Valid values: [ "lowdelay" || "throughput" || "reliability" || any 8-bit hex value preceded by "0x"]
+
+-C
+	Send CRLF as line-ending
+-t
+-U
+-u
+-v
+-w
+-X
+-x
+-z
+-e
