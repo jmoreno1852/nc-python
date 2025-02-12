@@ -38,6 +38,8 @@ deal with IPv4 and IPv6
 	assigns them
 -S
 	Enables RFC 2385 TCP MD5 signature option
+	https://man.freebsd.org/cgi/man.cgi?query=tcp&sektion=4&manpath=FreeBSD+5.3-RELEASE
+	
 -s <source_ip>
 	Specifies IP of interface used to send packets.
 	Error to use with -l

@@ -1,0 +1,32 @@
+import asyncio
+import argparse
+
+def input_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-D')
+    parser.add_argument('-d')
+    parser.add_argument('-h')
+    parser.add_argument('-i')
+    parser.add_argument('-k')
+    parser.add_argument('-l')
+    parser.add_argument('-n')
+    parser.add_argument('-p')
+    parser.add_argument('-r')
+    parser.add_argument('-S')
+    parser.add_argument('-s')
+    parser.add_argument('-T')
+    parser.add_argument('-C')
+    parser.add_argument('-t')
+    parser.add_argument('-U')
+    parser.add_argument('-u')
+    parser.add_argument('-v')
+    parser.add_argument('-w')
+    parser.add_argument('-X')
+    parser.add_argument('-x')
+async def main():
+    #Need to implement server serve with websockets or sockets
+    await asyncio.Future()
+    
+
+if __name__ == "__main__":
+    asyncio.run(main())
