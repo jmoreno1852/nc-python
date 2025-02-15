@@ -42,7 +42,10 @@ class ClientSocket():
             logging.warning(f"Could not stablish connection with: ({self.ip_address},{self.port})")
             logging.error(str(e))
             self.conn = False
-
+    def get_data(self):
+        pass
+    def send_data(self):
+        pass
     def execute_command(self,command):
         pass
     async def __execute_command(self,command):
