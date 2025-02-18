@@ -71,4 +71,8 @@ class ClientSocket():
             logging.warning(f"Failed to execute {command =}.")
         return False
     async def __execute_command(self,command):
-        pass
+        if self.conn is None:
+            logging.debug(f"Connection object is None. Creating connection with {self/URL}")
+            self.conn = await self.get_connection()
+        await self.conn.send(command)
+        return await self.conn.recv()
