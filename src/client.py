@@ -43,10 +43,32 @@ class ClientSocket():
             logging.error(str(e))
             self.conn = False
     def get_data(self):
-        pass
+        try:
+            data = self.c.recv(1024).decode('utf-8')
+            return data
+        except InterruptedError as e:
+            logging.error(f"Client Get Error!!! {e}")
+            return None
+        except OSError as e:
+            logging.error(f"Client Get Error!!! {e}")
+            return None
     def send_data(self):
-        pass
+        try:
+            data = input()
+            if data != "":
+                self.c.send(data.encode('utf-8'))
+            else:
+                print("Cant send empty strings")
+        except InterruptedError as e:
+            logging.error(f"Client Send Interrupted!!! {e}")
+        except OSError as e:
+            logging.error(f"Client Send Interrupted!!! {e}")
+
     def execute_command(self,command):
-        pass
+        try:
+            return self.loop.run_until_complete(self.__execute_command(command)
+        except Exception as e:
+            logging.warning(f"Failed to execute {command =}.")
+        return False
     async def __execute_command(self,command):
         pass
