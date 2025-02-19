@@ -76,3 +76,19 @@ class ClientSocket():
             self.conn = await self.get_connection()
         await self.conn.send(command)
         return await self.conn.recv()
+    def num_host(addr): #Implementation for -n
+        try:
+            socket.inet_pton(socket.AF_INET, address)
+            return True
+        except socket.error:
+            logging.warning(f"{addr} is not valid for IPv4")
+            return False
+
+    def log_data(file,data): #-o implenetarion
+        try:
+            with open(file,"a") as f:
+                f.write(f"{data}")
+        except IOError as e:
+            logging.error(f"Error when writting file {file}: {e}")
+                
+        
