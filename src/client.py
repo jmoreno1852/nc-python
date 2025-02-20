@@ -5,6 +5,7 @@ import asyncio
 import os 
 import sys
 import time
+import ctypes
 #Necesito crear una funcion para intentar la conexion unas 3 veces sino, dar error
 #Utilizar variable conn = None
 #Utilizar variable retry_count = 5, para intentar la conexion al menos 5 veces
@@ -76,7 +77,7 @@ class ClientSocket():
             self.conn = await self.get_connection()
         await self.conn.send(command)
         return await self.conn.recv()
-    def num_host(addr): #Implementation for -n
+    def num_host(addr): #-n Implementation
         try:
             socket.inet_pton(socket.AF_INET, address)
             return True
@@ -84,11 +85,39 @@ class ClientSocket():
             logging.warning(f"{addr} is not valid for IPv4")
             return False
 
-    def log_data(file,data): #-o implenetarion
+    def log_data(file,data): #-o Implementation
         try:
             with open(file,"a") as f:
                 f.write(f"{data}")
         except IOError as e:
             logging.error(f"Error when writting file {file}: {e}")
-                
+
+    def enable_md5sig(self): #-S Implementation
+        TCP_MD5SIG = 14
+        IPPROTO_TCP = 6
+        libc = ctypes.cdll.LoadLibrary("libc.so.6")
         
+        try:
+            socket_file = self.c.fileno()
+        except Exception as e:
+            logging.warning(f"Error getting socket file number: {e}")
+            return
+        libc.setsockopt(socket_file,IPPROTO_TCP,TCP_MD5SIG, b'')
+        logging.info("Sock option stablished to TCP_MD5SIG")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
