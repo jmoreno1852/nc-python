@@ -18,8 +18,7 @@ deal with IPv4 and IPv6
 -h
 	Print out nc help
 -i <interval>
-	Delay time interval between lines of text send and received.
-	Delay time between connections to multiple ports
+	Delay interval for lines sent, ports scanned
 -k
 	Forces to stay listenning for another connection after current connection is completed.
 	Error to use it without -l

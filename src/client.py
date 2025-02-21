@@ -53,7 +53,7 @@ class ClientSocket():
         except OSError as e:
             logging.error(f"Client Get Error!!! {e}")
             return None
-    def send_data(self):
+    def send_data(self, delay=None):
         try:
             data = input()
             if data != "":
@@ -64,7 +64,7 @@ class ClientSocket():
             logging.error(f"Client Send Interrupted!!! {e}")
         except OSError as e:
             logging.error(f"Client Send Interrupted!!! {e}")
-
+    ###-e implementation
     def execute_command(self,command):
         try:
             return self.loop.run_until_complete(self.__execute_command(command)
