@@ -5,7 +5,18 @@ listen on arbitrary TCP or UDP ports
 port scanning
 deal with IPv4 and IPv6
 
+Tengo que implementar el caso baso, cuando abro una terminal y realizo un <nc -nlvp 4444> y me conecto con otra instancia de nc tal que 127.0.0.1 4444, lo unico que pasa es que lo que printeo en una terminal sale en la otra, de tal forma que en las dos terminales se ve lo mismo.
+Esto implica que si que tengo que tener un funcionamiento default de handle_client, donde tenga que printear lo que me envie el client por default.
+
+Ademas de esto en el caso de hacer un wget, me esta printando el header de la peticion HTTP. Esta implementacion es simplemente por el handle_client, simeplemente se printea en pantalla la data recibida.
+Hacer que muestre el mismo texto al establecer conexiones:
+connect to [127.0.0.1] from (UNKNOWN) [127.0.0.1] 55234
+
+TERMINAR: Implementacion base de Netcat, client handler en servidor y cliente para enviar data desde la terminal, despues ponerme a implementar flags.
+
+
 #Quiero implementarlo como script asi que tendre que usar el shebang para no tener que usar python3 para la ejecucion.
+
 
 #Tendre que comprovar args kwargs para leer las distintas flags
 -4
