@@ -21,8 +21,8 @@ def udp_server(ip_address, port,delay=None):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 async def cmd_handler(s):
-    cmd = await s.recv()
-    (exitcode, output) = subprocess.getstatusoutput(cmd) 
+    cmd = await s.recv(1024)
+    (exitcode, output) = subprocess.getstatusoutput(cmd.decode('utf-8')) 
     print(f"CMD> {output}")
 
-    await s.send(str(exitcode))
+    await s.send(str(exitcode).encode('utf-8'))
