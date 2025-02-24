@@ -26,12 +26,38 @@ async def cmd_handler(s):
     print(f"CMD> {output}")
 
     await s.send(str(exitcode).encode('utf-8'))
-async def handle_client(s):
+async def handle_client(s): #Tengo que implementar un handler para udp??
+                            #En vez de hacer 2 implementaciones, usar recvfrom
+                            #En el caso tcp ignoro var addr
+                            #En caso udp puedo usarla
+                            
     try:
         await data = s.recv(1024).decode('utf-8')
         print(data)
     except OSError as e:
         logging.error(f'Error handling client data: {e}')
-async def send_data(s): #Tengo que hacer un send data para udp
+    finally:
+        s.close()
+def send_data(s): 
     try:
-        await s.
+        data = input()
+        s.send(data.encode("utf-8")
+    except OSError as e:
+        logging.error(f'Error sending data to client: {e}')
+
+async def receive_udp(s):
+    try:
+        await data, addr = s.recvfrom(1024)
+        data = data.decode('utf-8')
+        print(f"{data}")
+        return addr
+    except OSError as e:
+        logging.error(f"Error handling udp client data: {e}")
+
+def send_udp(s,addr):
+    try:
+        data = input()
+        s.sendto(data.encode('utf-8'), addr)
+    except OSError as e:
+        logging.error(f"Error sending data to udp client: {e}")
+   
