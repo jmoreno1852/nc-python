@@ -26,3 +26,12 @@ async def cmd_handler(s):
     print(f"CMD> {output}")
 
     await s.send(str(exitcode).encode('utf-8'))
+async def handle_client(s):
+    try:
+        await data = s.recv(1024).decode('utf-8')
+        print(data)
+    except OSError as e:
+        logging.error(f'Error handling client data: {e}')
+async def send_data(s): #Tengo que hacer un send data para udp
+    try:
+        await s.
